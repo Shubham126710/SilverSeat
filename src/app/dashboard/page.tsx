@@ -130,18 +130,19 @@ export default function Dashboard() {
     <div className="min-h-screen bg-bg-base text-gray-100 font-sans p-4 sm:p-8 relative">
       
       <div 
-        className="absolute top-0 left-0 w-full h-[70vh] pointer-events-none z-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/dashboard.jpg')" }}
+        className="absolute top-0 left-0 w-full h-[100vh] pointer-events-none z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/dashboard.jpg')", maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b0c10]/60 to-[#0b0c10]" />
+      </div>
+
+      {/* The rest of the page background will just fall back to the solid dark color set by bg-[#0b0c10] */}
+      <div className="fixed inset-0 pointer-events-none z-[-1] bg-[#0b0c10]">
         {/* Subtle noise overlay for texture */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
         {/* Ribbed Glass Scanline Effect */}
         <div className="absolute inset-0 opacity-[0.08]" style={{ background: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px)' }}></div>
       </div>
-
-      {/* The rest of the page background will just fall back to the solid dark color set by bg-[#0b0c10] */}
-      <div className="fixed inset-0 pointer-events-none z-[-1] bg-[#0b0c10]" />
 
       <div className="relative z-10">
         {/* Top Nav */}
