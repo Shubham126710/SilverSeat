@@ -11,6 +11,7 @@ interface MovieDetailsProps {
 export default function MovieDetails({ movieId, movies, onProceed }: MovieDetailsProps) {
   const movie = movies.find(m => m.id === movieId);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [trailerKey, setTrailerKey] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if this movie is in the user's wishlist
@@ -19,6 +20,20 @@ export default function MovieDetails({ movieId, movies, onProceed }: MovieDetail
       .then(data => {
         if (Array.isArray(data)) {
           setIsWishlisted(data.some(w => w.movieId === movieId));
+        }
+      })
+      .catch(console.error);
+
+    // Fetch trailer from TMDB
+    const tmdbId = movieId.replace("tmdb_", "");
+    fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.results) {
+          const trailer = data.results.find((v: any) => v.type === "Trailer" && v.site === "YouTube") || data.results.find((v: any) => v.site === "YouTube");
+          if (trailer) {
+            setTrailerKey(trailer.key);
+          }
         }
       })
       .catch(console.error);
@@ -63,7 +78,14 @@ export default function MovieDetails({ movieId, movies, onProceed }: MovieDetail
             </h1>
             <div className="flex gap-4 items-center mt-4">
               <button 
-                onClick={() => { if (movie.trailerUrl) window.open(movie.trailerUrl, '_blank') }}
+                onClick={() => { 
+                  if (trailerKey) {
+                    const el = document.getElementById('trailer-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  } else if (movie.trailerUrl) {
+                    window.open(movie.trailerUrl, '_blank');
+                  }
+                }}
                 className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors"
               >
                 <Play className="w-4 h-4 fill-current" /> Trailer
@@ -100,6 +122,20 @@ export default function MovieDetails({ movieId, movies, onProceed }: MovieDetail
         <p className="text-gray-300 leading-relaxed text-lg">
           {movie.synopsis}
         </p>
+
+        {/* Trailer Section */}
+        {trailerKey && (
+          <div id="trailer-section" className="relative rounded-2xl overflow-hidden border border-white/10 aspect-video w-full bg-black shadow-2xl">
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&controls=1&modestbranding=1&rel=0`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        )}
 
         {/* Highlight Card */}
         <div className="relative rounded-2xl overflow-hidden p-6 border border-white/10">
