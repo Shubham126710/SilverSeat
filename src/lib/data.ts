@@ -16,7 +16,7 @@ export interface Movie {
   cast: { name: string; profile: string | null }[];
 }
 
-export const CURRENT_MOVIES: Movie[] = [
+export const CURRENT_MOVIES: any[] = [
   {
     id: "m1",
     title: "Dune: Part Two",
