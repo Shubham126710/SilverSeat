@@ -24,17 +24,20 @@
 
 ## 📖 Overview
 
-**Artemis** is a state-of-the-art web application designed for the modern moviegoer. It provides a sleek, high-performance, and immersive interface for browsing movies, viewing cinematic details, and securely booking premium theater seats. 
+**Artemis** is a state-of-the-art web application designed for the modern moviegoer. It provides a sleek, high-performance, and deeply immersive interface for browsing movies, viewing cinematic details, and securely booking premium theater seats. 
 
-Built with aesthetic excellence and blazing-fast performance in mind, Artemis redefines the digital ticketing experience with advanced authentication, dynamic dashboards, and real-time interactions.
+Built with aesthetic excellence at its core, Artemis leverages a glassmorphism design language with subtle neon accents and micro-animations to create a luxurious user experience. The platform redefines digital ticketing with advanced authentication, interactive dashboards, intelligent search, and real-time movie trailers.
 
 ## ✨ Features
 
-- **Premium UI/UX**: A dark-mode first, glassmorphism-inspired cinematic interface designed to awe users.
-- **Secure Authentication**: Robust credential and OAuth login systems built on Better Auth, featuring seamless Google integration and secure session handling.
-- **Dynamic Dashboards**: Personalized user hubs to track upcoming bookings, ticketing history, and profile preferences.
-- **Role-based Access**: Comprehensive access control ensuring smooth segregation between regular users and system administrators.
-- **Seamless Database ORM**: Powered by Prisma and SQLite for rapid data modeling and type-safe backend queries.
+- **Premium Cinematic UI/UX**: A dark-mode first, highly polished glassmorphism interface featuring dynamic ribbed glass scanlines, glowing neon accents, and smooth Framer Motion micro-animations designed to awe users.
+- **Dynamic Personalized Dashboard**: A deeply interactive user hub that greets users dynamically based on the time of day, tracks upcoming bookings, and provides personalized "For You" movie recommendations.
+- **Integrated Movie Trailers**: Seamless TMDB API integration that fetches and embeds high-quality YouTube trailers directly within the sleek movie details pane without leaving the booking flow.
+- **Secure Next-Gen Authentication**: Robust credential and OAuth login systems built on Better Auth, featuring flawless Google integration and secure session handling (with a fallback bypass mode for development).
+- **Intelligent Search & Wishlisting**: A lightning-fast search tab for finding blockbusters and a one-click Wishlist system to save highly anticipated movies to your profile.
+- **Mock Payment & Wallet System**: A frictionless, beautiful checkout flow supporting multiple saved credit cards and a built-in Artemis Wallet balance.
+- **Interactive Promotions & Notifications**: A real-time dropdown system for managing unread alerts and easily copying dynamic promotional codes for discounts.
+- **Seamless Database ORM**: Powered by Prisma and PostgreSQL for rapid data modeling and type-safe, high-speed backend queries.
 
 ## 🛠 Tech Stack
 
@@ -46,7 +49,7 @@ This project is built using modern, enterprise-ready web technologies tailored f
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Authentication**: [Better Auth](https://better-auth.com/)
 - **Database ORM**: [Prisma](https://www.prisma.io/)
-- **Database**: [SQLite](https://sqlite.org/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
 
 ### Project Structure
 
