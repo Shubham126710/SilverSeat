@@ -32,8 +32,8 @@ Built with aesthetic excellence at its core, Artemis leverages a glassmorphism d
 
 - **Premium Cinematic UI/UX**: A dark-mode first, highly polished glassmorphism interface featuring dynamic ribbed glass scanlines, glowing neon accents, and smooth Framer Motion micro-animations designed to awe users.
 - **Dynamic Personalized Dashboard**: A deeply interactive user hub that greets users dynamically based on the time of day, tracks upcoming bookings, and provides personalized "For You" movie recommendations.
-- **Integrated Movie Trailers**: Seamless TMDB API integration that fetches and embeds high-quality YouTube trailers directly within the sleek movie details pane without leaving the booking flow.
-- **Secure Next-Gen Authentication**: Robust credential and OAuth login systems built on Better Auth, featuring flawless Google integration and secure session handling (with a fallback bypass mode for development).
+- **Rich Movie Metadata & Trailers**: Seamless integration with TMDB/IMDb for rich, accurate movie metadata and embedded high-quality YouTube trailers directly within the sleek movie details pane.
+- **Secure Next-Gen Authentication**: Robust credential and OAuth login systems built on Better Auth, featuring flawless **One-Click Google Login** and secure session handling (with a fallback bypass mode for development).
 - **Intelligent Search & Wishlisting**: A lightning-fast search tab for finding blockbusters and a one-click Wishlist system to save highly anticipated movies to your profile.
 - **Mock Payment & Wallet System**: A frictionless, beautiful checkout flow supporting multiple saved credit cards and a built-in Artemis Wallet balance.
 - **Interactive Promotions & Notifications**: A real-time dropdown system for managing unread alerts and easily copying dynamic promotional codes for discounts.
