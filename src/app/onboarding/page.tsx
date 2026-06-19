@@ -33,26 +33,20 @@ export default function OnboardingPage() {
     "Sci-Fi", "Sports", "Thriller", "War", "Western"
   ];
 
-  // Filter movies for swiping based on selected genres, fallback to classics if sparse
+  // Filter movies for swiping based on selected genres, filter for 2000s/2010s
   const swipeMovies = useMemo(() => {
     if (selectedGenres.length === 0) return [];
     
-    const matched = movies.filter(m => (m.tags || []).some(g => selectedGenres.includes(g)));
+    // First try to strictly match genre AND 2000s/2010s era
+    let matched = movies.filter(m => {
+      const isRightEra = m.releaseYear && m.releaseYear >= 2000 && m.releaseYear < 2020;
+      const matchesGenre = (m.tags || []).some(g => selectedGenres.includes(g));
+      return isRightEra && matchesGenre;
+    });
     
-    if (matched.length < 5 && movies.length > 0) {
-      // Find popular classic movies (older release years first as fallback)
-      const classics = [...movies]
-        .sort((a, b) => (a.releaseYear || 2025) - (b.releaseYear || 2025))
-        .slice(0, 15);
-      
-      const combined = [...matched];
-      for (const c of classics) {
-        if (!combined.some(m => m.id === c.id)) {
-          combined.push(c);
-        }
-      }
-      // Shuffle slightly for variety
-      return combined.sort(() => Math.random() - 0.5);
+    // If we have none in that era, fallback to matching genre in ANY era
+    if (matched.length === 0) {
+      matched = movies.filter(m => (m.tags || []).some(g => selectedGenres.includes(g)));
     }
     
     return matched.sort(() => Math.random() - 0.5); // Randomize the stack
@@ -145,13 +139,13 @@ export default function OnboardingPage() {
           Back
         </button>
 
-        <div className="glass p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-xl">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500/30 to-pink-500/30 flex items-center justify-center border border-pink-500/30 shadow-[0_0_30px_rgba(236,72,153,0.3)]">
-              <Sparkles className="w-7 h-7 text-pink-400" />
+        <div className="glass p-6 sm:p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-gradient-to-tr from-purple-500/30 to-pink-500/30 flex items-center justify-center border border-pink-500/30 shadow-[0_0_30px_rgba(236,72,153,0.3)]">
+              <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-pink-400" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Taste Preferences</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">Taste Preferences</h1>
               <p className="text-sm md:text-base text-gray-400 mt-1">Train your personal recommendation engine.</p>
             </div>
           </div>
@@ -167,10 +161,10 @@ export default function OnboardingPage() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="w-full absolute top-0"
                 >
-                  <h4 className="text-2xl text-white font-bold mb-2">Step 1: What do you love?</h4>
-                  <p className="text-gray-400 mb-8 text-lg">Select the genres you enjoy watching.</p>
+                  <h4 className="text-xl sm:text-2xl text-white font-bold mb-2">Step 1: What do you love?</h4>
+                  <p className="text-gray-400 mb-6 sm:mb-8 text-base sm:text-lg">Select the genres you enjoy watching.</p>
                   
-                  <div className="flex flex-wrap gap-3 mb-12">
+                  <div className="flex flex-wrap gap-2 sm:gap-3 mb-10 sm:mb-12">
                     {genresList.map(g => {
                       const active = selectedGenres.includes(g);
                       return (
@@ -179,7 +173,7 @@ export default function OnboardingPage() {
                           whileTap={{ scale: 0.95 }}
                           key={g}
                           onClick={() => toggleGenre(g)}
-                          className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                          className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                             active 
                               ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-[0_0_20px_rgba(236,72,153,0.5)] border border-transparent" 
                               : "bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:border-white/30"
@@ -191,13 +185,13 @@ export default function OnboardingPage() {
                     })}
                   </div>
                   
-                  <div className="flex justify-end mt-8">
+                  <div className="flex justify-end mt-4 sm:mt-8">
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setStep(2)}
                       disabled={selectedGenres.length === 0}
-                      className="px-8 py-3.5 bg-white text-black font-bold text-lg rounded-xl disabled:opacity-50 transition-all hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2"
+                      className="px-6 py-3 sm:px-8 sm:py-3.5 bg-white text-black font-bold text-base sm:text-lg rounded-xl disabled:opacity-50 transition-all hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2"
                     >
                       Next Step <span className="text-xl">→</span>
                     </motion.button>
@@ -214,11 +208,11 @@ export default function OnboardingPage() {
                   transition={{ duration: 0.4 }}
                   className="flex flex-col items-center w-full absolute top-0"
                 >
-                  <h4 className="text-2xl text-white font-bold mb-2">Step 2: Rate these movies</h4>
-                  <p className="text-gray-400 mb-8">Swipe left to dislike, swipe right to like.</p>
+                  <h4 className="text-xl sm:text-2xl text-white font-bold mb-2">Step 2: Rate these movies</h4>
+                  <p className="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">Swipe left to dislike, swipe right to like.</p>
                   
                   {/* Tinder Card wrapper for animation */}
-                  <div className="relative w-80 h-[28rem] perspective-1000">
+                  <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[3/4] perspective-1000">
                     <AnimatePresence>
                       <motion.div 
                         key={currentMovie.id}
@@ -229,7 +223,7 @@ export default function OnboardingPage() {
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.2 } }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-gray-900 cursor-grab active:cursor-grabbing backdrop-blur-xl"
+                        className="absolute inset-0 rounded-[2rem] p-3 sm:p-4 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 bg-gray-900/80 cursor-grab active:cursor-grabbing backdrop-blur-2xl"
                         style={{
                           boxShadow: dominantColor ? `0 20px 50px -20px ${dominantColor}80` : undefined,
                           x, 
@@ -237,19 +231,23 @@ export default function OnboardingPage() {
                           opacity 
                         }}
                       >
-                        <img 
-                          src={currentMovie.image} 
-                          alt={currentMovie.title} 
-                          className="w-full h-full object-cover pointer-events-none" 
-                        />
+                        {/* Poster Image Area */}
+                        <div className="w-full flex-1 rounded-[1.25rem] overflow-hidden relative shadow-inner bg-black">
+                          <img 
+                            src={currentMovie.image} 
+                            alt={currentMovie.title} 
+                            className="w-full h-full object-cover pointer-events-none" 
+                          />
+                        </div>
                         
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 z-20 pointer-events-none" />
-                        
-                        <div className="absolute bottom-6 left-6 right-6 text-center z-30 pointer-events-none">
-                          <h3 className="text-3xl font-bold text-white mb-3 leading-tight drop-shadow-md">{currentMovie.title}</h3>
-                          <div className="flex flex-wrap gap-2 justify-center">
+                        {/* Title and Tags Area */}
+                        <div className="pt-4 pb-1 px-1 text-center pointer-events-none h-[5rem] flex flex-col justify-center">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 leading-tight truncate px-2 drop-shadow-sm">
+                            {currentMovie.title}
+                          </h3>
+                          <div className="flex flex-wrap gap-1.5 justify-center overflow-hidden h-[22px]">
                             {currentMovie.tags.slice(0, 3).map(t => (
-                              <span key={t} className="text-[11px] uppercase tracking-wider font-bold text-gray-300 bg-white/20 px-3 py-1 rounded-full backdrop-blur-md border border-white/10 shadow-sm">
+                              <span key={t} className="text-[9px] sm:text-[10px] uppercase tracking-wider font-bold text-gray-300 bg-white/10 px-2 py-0.5 rounded-full backdrop-blur-md border border-white/5 whitespace-nowrap">
                                 {t}
                               </span>
                             ))}
@@ -259,7 +257,7 @@ export default function OnboardingPage() {
                     </AnimatePresence>
                   </div>
 
-                  <div className="flex items-center gap-16 mt-8 z-20">
+                  <div className="flex items-center gap-10 sm:gap-16 mt-6 sm:mt-8 z-20">
                     <motion.button 
                       whileHover={{ scale: 1.15 }}
                       whileTap={{ scale: 0.9 }}
