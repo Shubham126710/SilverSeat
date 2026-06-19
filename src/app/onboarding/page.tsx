@@ -90,6 +90,12 @@ export default function OnboardingPage() {
     // If the DB STILL has nothing for this genre, or DB failed, use our robust curated fallback list
     if (matched.length === 0) {
       matched = FALLBACK_MOVIES.filter(m => (m.tags || []).some(g => selectedGenres.includes(g)));
+      
+      // Ultimate safety net: if the user picked a genre we have ZERO movies for anywhere (like Documentary or Sports)
+      // just give them the whole fallback list so the app doesn't break to an empty state
+      if (matched.length === 0) {
+        matched = [...FALLBACK_MOVIES];
+      }
     }
     
     return matched.sort(() => Math.random() - 0.5); // Randomize the stack
