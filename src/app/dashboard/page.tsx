@@ -148,7 +148,7 @@ export default function Dashboard() {
         {/* Top Nav */}
         <nav className="flex items-center justify-between mb-8 max-w-6xl mx-auto pt-4 relative z-[200]">
           <Link href="/">
-            <img src="/artemis-logo.png" alt="Artemis" className="h-8 object-contain" />
+            <img src="/artemis-logo.png" alt="Artemis" className="h-12 object-contain" />
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="flex items-center gap-1 sm:gap-2 mr-2 sm:mr-4">
