@@ -8,30 +8,14 @@ import { FastAverageColor } from "fast-average-color";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 const FALLBACK_MOVIES: any[] = [
-  { id: "fb1", title: "The Dark Knight", image: "https://image.tmdb.org/t/p/w1280/qJ2tW6WMUDux911r6m7haRef0WH.jpg", tags: ["Action", "Crime", "Drama", "Thriller"], releaseYear: 2008 },
-  { id: "fb2", title: "Inception", image: "https://image.tmdb.org/t/p/w1280/8Z8dptA9MlyzM551EPE84pEaHXI.jpg", tags: ["Action", "Sci-Fi", "Adventure"], releaseYear: 2010 },
-  { id: "fb3", title: "Finding Nemo", image: "https://image.tmdb.org/t/p/w1280/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg", tags: ["Animation", "Family"], releaseYear: 2003 },
-  { id: "fb4", title: "Superbad", image: "https://image.tmdb.org/t/p/w1280/ek8e8txUyUwd2BNqj6lFBDc4kM.jpg", tags: ["Comedy"], releaseYear: 2007 },
-  { id: "fb5", title: "The Conjuring", image: "https://image.tmdb.org/t/p/w1280/wVYREutTvI2tmxr6ujrHT704wGF.jpg", tags: ["Horror", "Mystery", "Thriller"], releaseYear: 2013 },
-  { id: "fb6", title: "Gladiator", image: "https://image.tmdb.org/t/p/w1280/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg", tags: ["Action", "Adventure", "Drama", "History"], releaseYear: 2000 },
-  { id: "fb7", title: "La La Land", image: "https://image.tmdb.org/t/p/w1280/uDO8zWDhfWwoFdKS4fzkUJt0Ry0.jpg", tags: ["Comedy", "Drama", "Romance", "Music"], releaseYear: 2016 },
-  { id: "fb8", title: "Mad Max: Fury Road", image: "https://image.tmdb.org/t/p/w1280/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg", tags: ["Action", "Sci-Fi", "Adventure"], releaseYear: 2015 },
-  { id: "fb9", title: "Up", image: "https://image.tmdb.org/t/p/w1280/vpbaStTMt8qqXaEgnOR2EE4DNJk.jpg", tags: ["Animation", "Comedy", "Family", "Adventure"], releaseYear: 2009 },
-  { id: "fb10", title: "The Social Network", image: "https://image.tmdb.org/t/p/w1280/n0ybibhJtQ5icDqTc8oqT7s5Bf1.jpg", tags: ["Biography", "Drama"], releaseYear: 2010 },
-  { id: "fb11", title: "No Country for Old Men", image: "https://image.tmdb.org/t/p/w1280/bj1v6lzKjXk3Kk0lEsT7pXQYV9.jpg", tags: ["Crime", "Drama", "Thriller"], releaseYear: 2007 },
-  { id: "fb12", title: "Whiplash", image: "https://image.tmdb.org/t/p/w1280/7fn624j5lj3xTme2SgiLCeuedmO.jpg", tags: ["Drama", "Music"], releaseYear: 2014 },
-  { id: "fb13", title: "Spider-Man: Into the Spider-Verse", image: "https://image.tmdb.org/t/p/w1280/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg", tags: ["Action", "Animation", "Adventure", "Sci-Fi", "Family"], releaseYear: 2018 },
-  { id: "fb14", title: "The Grand Budapest Hotel", image: "https://image.tmdb.org/t/p/w1280/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg", tags: ["Comedy", "Drama"], releaseYear: 2014 },
-  { id: "fb15", title: "Django Unchained", image: "https://image.tmdb.org/t/p/w1280/7oWY8VDWW7thTzWh3OKQ1M6P2zB.jpg", tags: ["Drama", "Western"], releaseYear: 2012 },
-  { id: "fb16", title: "Interstellar", image: "https://image.tmdb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", tags: ["Sci-Fi", "Drama", "Adventure"], releaseYear: 2014 },
-  { id: "fb17", title: "Gone Girl", image: "https://image.tmdb.org/t/p/w1280/qymaEx4k2c3LDBxIu1R8I7T046H.jpg", tags: ["Mystery", "Thriller", "Drama"], releaseYear: 2014 },
-  { id: "fb18", title: "The Lord of the Rings: The Return of the King", image: "https://image.tmdb.org/t/p/w1280/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg", tags: ["Adventure", "Fantasy", "Action"], releaseYear: 2003 },
-  { id: "fb19", title: "Spirited Away", image: "https://image.tmdb.org/t/p/w1280/39wmItIWsg5sZMyRUHLkXG2bO04.jpg", tags: ["Animation", "Family", "Fantasy"], releaseYear: 2001 },
-  { id: "fb20", title: "Inglourious Basterds", image: "https://image.tmdb.org/t/p/w1280/7sfbEnaARXDD8zH7T6wGqxQ3XG.jpg", tags: ["War", "Drama", "Action"], releaseYear: 2009 },
-  { id: "fb21", title: "Step Brothers", image: "https://image.tmdb.org/t/p/w500/jVVBvvA4MvU7Q2d5oNlT5n3zZED.jpg", tags: ["Comedy"], releaseYear: 2008 },
-  { id: "fb22", title: "Get Out", image: "https://image.tmdb.org/t/p/w500/tFXcEccSQAmKW86dZK3X90xUjA3.jpg", tags: ["Mystery", "Thriller", "Horror"], releaseYear: 2017 },
-  { id: "fb23", title: "Moneyball", image: "https://image.tmdb.org/t/p/w500/4yIQqdwx8z6nO5K0n92lW8AetmJ.jpg", tags: ["Biography", "Drama", "Sports"], releaseYear: 2011 },
-  { id: "fb24", title: "Free Solo", image: "https://image.tmdb.org/t/p/w500/v4QfYZMACODlWul9bBX5zPteAxe.jpg", tags: ["Documentary", "Adventure"], releaseYear: 2018 }
+  { id: "fb1", title: "Dune: Part Two", image: "/Dune_part2_movie.jpg", tags: ["Action", "Sci-Fi", "Adventure", "Western", "War"], releaseYear: 2024 },
+  { id: "fb2", title: "Oppenheimer", image: "/Oppenheimer_Movie-.jpeg", tags: ["Biography", "Drama", "History", "Documentary"], releaseYear: 2023 },
+  { id: "fb3", title: "Project Hail Mary", image: "/Project_Hail_Mary_movie.jpg", tags: ["Sci-Fi", "Adventure", "Thriller"], releaseYear: 2026 },
+  { id: "fb4", title: "F1", image: "/F1_movie.jpg", tags: ["Sports", "Drama"], releaseYear: 2025 },
+  { id: "fb5", title: "Barbie", image: "/barbie_movie.jpeg", tags: ["Comedy", "Fantasy", "Romance", "Music"], releaseYear: 2023 },
+  { id: "fb6", title: "Super Mario Galaxy", image: "/super_mario_galaxy_movie.jpeg", tags: ["Animation", "Family"], releaseYear: 2025 },
+  { id: "fb7", title: "Superman", image: "/superman_movie.jpeg", tags: ["Action", "Sci-Fi"], releaseYear: 2025 },
+  { id: "fb8", title: "Obsession", image: "/obsession_movie.jpg", tags: ["Thriller", "Mystery", "Crime", "Horror"], releaseYear: 2024 }
 ];
 
 export default function OnboardingPage() {
