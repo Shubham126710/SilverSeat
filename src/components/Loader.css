@@ -9,37 +9,33 @@
   width: 100px;
   border-radius: 50%;
   background-color: #e8e8e8;
+  border: 4px solid #e8e8e8;
   box-shadow: 0 0 15px rgba(232,232,232,0.8);
   filter: blur(.4px);
   position: relative;
-  overflow: hidden;
+  
+  -webkit-mask-image: radial-gradient(circle 60px at center, transparent 99%, black 100%);
+  mask-image: radial-gradient(circle 60px at center, transparent 99%, black 100%);
+  -webkit-mask-size: 800px 800px;
+  mask-size: 800px 800px;
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+  
+  animation: eclipse-mask 2.5s infinite;
 }
 
-.moon-shadow {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background-color: #050505;
-  top: -10px;
-  left: -10px;
-  position: absolute;
-  animation: animate-moon 2s infinite;
-}
-
-@keyframes animate-moon {
+@keyframes eclipse-mask {
   0% {
-    transform: translateX(150px);
-    background-color: #050505;
+    -webkit-mask-position: -250px -345px;
+    mask-position: -250px -345px;
   }
-
   50% {
-    transform: translateX(-10px);
-    background-color: #050505;
+    -webkit-mask-position: -410px -345px;
+    mask-position: -410px -345px;
   }
-
   100% {
-    transform: translateX(-170px);
-    background-color: #050505;
+    -webkit-mask-position: -570px -345px;
+    mask-position: -570px -345px;
   }
 }
 

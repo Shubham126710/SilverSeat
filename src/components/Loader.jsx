@@ -68,9 +68,7 @@ const Loader = ({ setLoading }) => {
 
       <div className="relative flex flex-col items-center justify-center z-10 gap-12">
         <div className="moon-loader-wrapper">
-          <div className="moon-loader">
-            <div className="moon-shadow"></div>
-          </div>
+          <div className="moon-loader"></div>
         </div>
         
         {/* Subtle Loading Text and Random Quote */}
