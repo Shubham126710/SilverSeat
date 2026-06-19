@@ -28,27 +28,8 @@ export default function OnboardingPage() {
   const [likedMovies, setLikedMovies] = useState<string[]>([]);
   const [dislikedMovies, setDislikedMovies] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetch("/api/movies")
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setMovies(data);
-        } else {
-          throw new Error("Empty or invalid data");
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to fetch movies, using fallbacks", err);
-        // Fallback to static movies if DB is unreachable
-        import("@/lib/data").then(mod => {
-          setMovies(mod.CURRENT_MOVIES);
-        });
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  const [swipeMovies, setSwipeMovies] = useState<any[]>([]);
+  const [isFetchingRecommendations, setIsFetchingRecommendations] = useState(false);
 
   const genresList = [
     "Action", "Adventure", "Animation", "Biography", "Comedy",
@@ -57,35 +38,24 @@ export default function OnboardingPage() {
     "Sci-Fi", "Sports", "Thriller", "War", "Western"
   ];
 
-  // Filter movies for swiping based on selected genres, filter for 2000s/2010s
-  const swipeMovies = useMemo(() => {
-    if (selectedGenres.length === 0) return [];
-    
-    // First try to strictly match genre AND 2000s/2010s era
-    let matched = movies.filter(m => {
-      const isRightEra = m.releaseYear && m.releaseYear >= 2000 && m.releaseYear < 2020;
-      const matchesGenre = (m.tags || []).some((g: string) => selectedGenres.includes(g));
-      return isRightEra && matchesGenre;
-    });
-    
-    // If we have none in that era, fallback to matching genre in ANY era from DB
-    if (matched.length === 0) {
-      matched = movies.filter(m => (m.tags || []).some((g: string) => selectedGenres.includes(g)));
-    }
-
-    // If the DB STILL has nothing for this genre, or DB failed, use our robust curated fallback list
-    if (matched.length === 0) {
-      matched = FALLBACK_MOVIES.filter(m => (m.tags || []).some((g: string) => selectedGenres.includes(g)));
-      
-      // Ultimate safety net: if the user picked a genre we have ZERO movies for anywhere (like Documentary or Sports)
-      // just give them the whole fallback list so the app doesn't break to an empty state
-      if (matched.length === 0) {
-        matched = [...FALLBACK_MOVIES];
+  const proceedToStep2 = async () => {
+    setIsFetchingRecommendations(true);
+    try {
+      const res = await fetch(`/api/movies/onboarding?genres=${encodeURIComponent(selectedGenres.join(","))}`);
+      const data = await res.json();
+      if (data && data.length > 0) {
+        setSwipeMovies(data);
+      } else {
+        // Ultimate safety net
+        setSwipeMovies([...FALLBACK_MOVIES].sort(() => Math.random() - 0.5));
       }
+    } catch (e) {
+      setSwipeMovies([...FALLBACK_MOVIES].sort(() => Math.random() - 0.5));
+    } finally {
+      setIsFetchingRecommendations(false);
+      setStep(2);
     }
-    
-    return matched.sort(() => Math.random() - 0.5); // Randomize the stack
-  }, [movies, selectedGenres]);
+  };
 
   const currentSwipeIndex = likedMovies.length + dislikedMovies.length;
   const currentMovie = swipeMovies[currentSwipeIndex];
@@ -234,11 +204,11 @@ export default function OnboardingPage() {
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => setStep(2)}
-                      disabled={selectedGenres.length === 0 || isLoading}
+                      onClick={proceedToStep2}
+                      disabled={selectedGenres.length === 0 || isFetchingRecommendations}
                       className="px-6 py-3 sm:px-8 sm:py-3.5 bg-white text-black font-bold text-base sm:text-lg rounded-xl disabled:opacity-50 transition-all hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2"
                     >
-                      {isLoading ? "Loading..." : "Next Step"} <span className="text-xl">→</span>
+                      {isFetchingRecommendations ? "Fetching..." : "Next Step"} <span className="text-xl">→</span>
                     </motion.button>
                   </div>
                 </motion.div>

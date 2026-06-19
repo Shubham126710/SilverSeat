@@ -20,7 +20,7 @@ export const CURRENT_MOVIES: any[] = [
   {
     id: "m1",
     title: "Dune: Part Two",
-    image: "/hero.jpg",
+    image: "/Dune_part2_movie.jpg",
     tags: ["Action", "Sci-Fi", "Adventure"],
     rating: 4.8,
     isNew: true,
