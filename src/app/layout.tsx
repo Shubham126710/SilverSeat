@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '../index.css';
 
 export const metadata: Metadata = {
-  title: 'SilverSeat',
+  title: 'Artemis',
   description: 'A modern platform to discover, book, and experience movies in one place.',
 };
 

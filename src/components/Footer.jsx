@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Left Column (Brand + CTA) */}
           <div className="lg:col-span-5 flex flex-col items-start">
             <div className="flex items-center gap-3 mb-6">
-              <img src="/logo.png" alt="SilverSeat" className="h-12 w-auto object-contain" />
+              <img src="/logo.png" alt="Artemis" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-gray-400 max-w-sm mb-8 leading-relaxed text-sm">
               A modern platform to discover, book, and experience movies in one place.
@@ -69,7 +69,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600 border-t border-white/5 relative z-10">
-          <p>© {new Date().getFullYear()} SilverSeat. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Artemis. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gray-400 transition-colors">Terms & Conditions</a>

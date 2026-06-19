@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         userId = defaultUser.id;
       } else {
         const newUser = await prisma.user.create({
-          data: { name: "Bypass User", email: "bypass@silverseat.com", emailVerified: true }
+          data: { name: "Bypass User", email: "bypass@artemis.com", emailVerified: true }
         });
         userId = newUser.id;
       }
@@ -62,7 +62,7 @@ export async function GET(req: Request) {
         userId = defaultUser.id;
       } else {
         const newUser = await prisma.user.create({
-          data: { name: "Bypass User", email: "bypass@silverseat.com", emailVerified: true }
+          data: { name: "Bypass User", email: "bypass@artemis.com", emailVerified: true }
         });
         userId = newUser.id;
       }

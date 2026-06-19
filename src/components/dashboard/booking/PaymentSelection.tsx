@@ -156,7 +156,7 @@ export default function PaymentSelection({ movieId, movies, bookingData, onProce
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <Wallet className="w-5 h-5 text-red-400" />
-              <span className="font-bold text-white">Silver Wallet</span>
+              <span className="font-bold text-white">Artemis Wallet</span>
             </div>
             <p className="text-xs text-gray-500 mt-1">Balance: Rs. 500.00</p>
           </div>

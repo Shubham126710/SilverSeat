@@ -1,4 +1,4 @@
-# SilverSeat Auth & Backend Setup
+# Artemis Auth & Backend Setup
 
 ## Setup Instructions
 

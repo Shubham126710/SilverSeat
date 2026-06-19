@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo.png" alt="SilverSeat Logo" width="350" />
+  <img src="public/logo.png" alt="Artemis Logo" width="350" />
   <p align="center">
     <br/>
     <strong>A premium, high-performance cinematic ticketing and seat reservation platform.</strong>
@@ -24,9 +24,9 @@
 
 ## 📖 Overview
 
-**SilverSeat** is a state-of-the-art web application designed for the modern moviegoer. It provides a sleek, high-performance, and immersive interface for browsing movies, viewing cinematic details, and securely booking premium theater seats. 
+**Artemis** is a state-of-the-art web application designed for the modern moviegoer. It provides a sleek, high-performance, and immersive interface for browsing movies, viewing cinematic details, and securely booking premium theater seats. 
 
-Built with aesthetic excellence and blazing-fast performance in mind, SilverSeat redefines the digital ticketing experience with advanced authentication, dynamic dashboards, and real-time interactions.
+Built with aesthetic excellence and blazing-fast performance in mind, Artemis redefines the digital ticketing experience with advanced authentication, dynamic dashboards, and real-time interactions.
 
 ## ✨ Features
 
@@ -73,8 +73,8 @@ Follow these steps to set up the project locally.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Shubham126710/SilverSeat.git
-   cd SilverSeat
+   git clone https://github.com/Shubham126710/Artemis.git
+   cd Artemis
    ```
 
 2. **Install dependencies**
@@ -106,7 +106,7 @@ Follow these steps to set up the project locally.
    npm run dev
    ```
 
-   Open [http://localhost:3000](http://localhost:3000) with your browser to launch SilverSeat.
+   Open [http://localhost:3000](http://localhost:3000) with your browser to launch Artemis.
 
 ## 📄 License
 

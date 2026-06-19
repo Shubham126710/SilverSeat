@@ -104,7 +104,7 @@ const FeaturesSection = () => {
           >
             <h3 className="text-xl font-semibold mb-2 text-white">Premium Experiences</h3>
             <p className="text-sm text-gray-400 mb-8 leading-relaxed">
-              Unlock VIP lounges, IMAX, and exclusive premieres with SilverSeat Elite.
+              Unlock VIP lounges, IMAX, and exclusive premieres with Artemis Elite.
             </p>
             {/* Abstract visual placeholder */}
             <div className="mt-auto h-40 rounded-xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/5 relative overflow-hidden flex items-end justify-center">

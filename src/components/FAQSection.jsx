@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: "How do I book tickets on SilverSeat?",
+    question: "How do I book tickets on Artemis?",
     answer: "Booking tickets is easy! Simply browse our trending movies, select a showtime that works for you, choose your preferred seats on our interactive map, and proceed to checkout. You'll receive a digital ticket instantly."
   },
   {
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: "Is there a loyalty program?",
-    answer: "Yes! With SilverSeat Rewards, you earn points on every purchase which can be redeemed for free tickets, concessions, and exclusive premiere access."
+    answer: "Yes! With Artemis Rewards, you earn points on every purchase which can be redeemed for free tickets, concessions, and exclusive premiere access."
   }
 ];
 
