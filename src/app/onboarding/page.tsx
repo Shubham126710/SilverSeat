@@ -162,6 +162,16 @@ export default function OnboardingPage() {
     router.push("/dashboard");
   };
 
+  // Auto-redirect if they reach the empty state
+  useEffect(() => {
+    if (step === 2 && !currentMovie) {
+      const timer = setTimeout(() => {
+        finishOnboarding(likedMovies);
+      }, 1500); // Give them 1.5s to see the "All Set!" message
+      return () => clearTimeout(timer);
+    }
+  }, [step, currentMovie]);
+
   return (
     <div className="min-h-screen bg-bg-base text-gray-100 font-sans relative overflow-hidden flex items-center justify-center p-4">
       {/* Glowing Background */}
