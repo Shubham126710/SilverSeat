@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo.png" alt="Artemis Logo" width="350" />
+  <img src="public/artemis-logo.png" alt="Artemis Logo" width="350" />
   <p align="center">
     <br/>
     <strong>A premium, high-performance cinematic ticketing and seat reservation platform.</strong>

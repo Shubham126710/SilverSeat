@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 
 const studios = [
   { name: "Marvel", logo: "/Marvel_Logo.png" },
-  { name: "Warner Bros", logo: "/warner_bros_logo.png", alwaysWhite: true },
-  { name: "Universal", logo: "/universal_logo.png" },
-  { name: "Paramount", logo: "/Paramount_logo.png" },
-  { name: "Lionsgate", logo: "/Lionsgate_logo.png" },
-  { name: "Pixar", logo: "/Pixar_logo.png", alwaysWhite: true },
+  { name: "Warner Bros", logo: "/warner_bros_artemis-logo.png", alwaysWhite: true },
+  { name: "Universal", logo: "/universal_artemis-logo.png" },
+  { name: "Paramount", logo: "/Paramount_artemis-logo.png" },
+  { name: "Lionsgate", logo: "/Lionsgate_artemis-logo.png" },
+  { name: "Pixar", logo: "/Pixar_artemis-logo.png", alwaysWhite: true },
   { name: "DreamWorks", logo: "/dreamworks_logo.jpeg", alwaysWhite: true },
-  { name: "Sony Pictures", logo: "/Sony_Pictures_logo.png", alwaysWhite: true },
+  { name: "Sony Pictures", logo: "/Sony_Pictures_artemis-logo.png", alwaysWhite: true },
   { name: "Disney", logo: "/Disney_logo.svg", alwaysWhite: true }
 ];
 
