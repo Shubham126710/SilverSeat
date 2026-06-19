@@ -28,8 +28,10 @@ const FALLBACK_MOVIES: any[] = [
   { id: "fb18", title: "The Lord of the Rings: The Return of the King", image: "https://image.tmdb.org/t/p/w1280/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg", tags: ["Adventure", "Fantasy", "Action"], releaseYear: 2003 },
   { id: "fb19", title: "Spirited Away", image: "https://image.tmdb.org/t/p/w1280/39wmItIWsg5sZMyRUHLkXG2bO04.jpg", tags: ["Animation", "Family", "Fantasy"], releaseYear: 2001 },
   { id: "fb20", title: "Inglourious Basterds", image: "https://image.tmdb.org/t/p/w1280/7sfbEnaARXDD8zH7T6wGqxQ3XG.jpg", tags: ["War", "Drama", "Action"], releaseYear: 2009 },
-  { id: "fb21", title: "Step Brothers", image: "https://image.tmdb.org/t/p/w1280/jVVBvvA4MvU7Q2d5oNlT5n3zZED.jpg", tags: ["Comedy"], releaseYear: 2008 },
-  { id: "fb22", title: "Get Out", image: "https://image.tmdb.org/t/p/w1280/tFXcEccSQAmKW86dZK3X90xUjA3.jpg", tags: ["Mystery", "Thriller", "Horror"], releaseYear: 2017 }
+  { id: "fb21", title: "Step Brothers", image: "https://image.tmdb.org/t/p/w500/jVVBvvA4MvU7Q2d5oNlT5n3zZED.jpg", tags: ["Comedy"], releaseYear: 2008 },
+  { id: "fb22", title: "Get Out", image: "https://image.tmdb.org/t/p/w500/tFXcEccSQAmKW86dZK3X90xUjA3.jpg", tags: ["Mystery", "Thriller", "Horror"], releaseYear: 2017 },
+  { id: "fb23", title: "Moneyball", image: "https://image.tmdb.org/t/p/w500/4yIQqdwx8z6nO5K0n92lW8AetmJ.jpg", tags: ["Biography", "Drama", "Sports"], releaseYear: 2011 },
+  { id: "fb24", title: "Free Solo", image: "https://image.tmdb.org/t/p/w500/v4QfYZMACODlWul9bBX5zPteAxe.jpg", tags: ["Documentary", "Adventure"], releaseYear: 2018 }
 ];
 
 export default function OnboardingPage() {
@@ -293,7 +295,7 @@ export default function OnboardingPage() {
                         {/* Poster Image Area */}
                         <div className="w-full flex-1 rounded-[1.25rem] overflow-hidden relative shadow-inner bg-black">
                           <img 
-                            src={currentMovie.image} 
+                            src={currentMovie.image.startsWith('http') ? `/api/proxy-image?url=${encodeURIComponent(currentMovie.image)}` : currentMovie.image} 
                             alt={currentMovie.title} 
                             className="w-full h-full object-cover pointer-events-none" 
                           />
@@ -305,7 +307,7 @@ export default function OnboardingPage() {
                             {currentMovie.title}
                           </h3>
                           <div className="flex flex-wrap gap-1.5 justify-center overflow-hidden h-[22px]">
-                            {currentMovie.tags.slice(0, 3).map(t => (
+                            {currentMovie.tags.slice(0, 3).map((t: string) => (
                               <span key={t} className="text-[9px] sm:text-[10px] uppercase tracking-wider font-bold text-gray-300 bg-white/10 px-2 py-0.5 rounded-full backdrop-blur-md border border-white/5 whitespace-nowrap">
                                 {t}
                               </span>
@@ -314,25 +316,6 @@ export default function OnboardingPage() {
                         </div>
                       </motion.div>
                     </AnimatePresence>
-                  </div>
-
-                  <div className="flex items-center gap-10 sm:gap-16 mt-6 sm:mt-8 z-20">
-                    <motion.button 
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleSwipe('dislike')}
-                      className="w-16 h-16 rounded-full bg-red-500/10 border-2 border-red-500/50 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors shadow-lg hover:shadow-red-500/40"
-                    >
-                      <ThumbsDown className="w-7 h-7" />
-                    </motion.button>
-                    <motion.button 
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleSwipe('like')}
-                      className="w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500/50 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-colors shadow-lg hover:shadow-green-500/40"
-                    >
-                      <Heart className="w-10 h-10 fill-current" />
-                    </motion.button>
                   </div>
                 </motion.div>
               )}
