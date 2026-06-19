@@ -12,6 +12,7 @@
   box-shadow: 0 0 15px rgba(232,232,232,0.8);
   filter: blur(.4px);
   position: relative;
+  overflow: hidden;
 }
 
 .moon-shadow {
@@ -22,7 +23,7 @@
   top: -10px;
   left: -10px;
   position: absolute;
-  animation: animate-moon 2s infinite;
+  animation: animate-moon 1.5s infinite;
 }
 
 @keyframes animate-moon {
