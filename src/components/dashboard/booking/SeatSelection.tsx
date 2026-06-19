@@ -1,14 +1,45 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Check } from "lucide-react";
 
 interface SeatSelectionProps {
+  date?: string;
+  cinema?: string;
+  time?: string;
   onProceed: (seats: string[]) => void;
 }
 
-export default function SeatSelection({ onProceed }: SeatSelectionProps) {
+export default function SeatSelection({ date = "", cinema = "", time = "", onProceed }: SeatSelectionProps) {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
+  const bookedSeats = useMemo(() => {
+    const seedString = `${date}-${cinema}-${time}`;
+    let seed = 0;
+    for (let i = 0; i < seedString.length; i++) {
+      seed += seedString.charCodeAt(i);
+    }
+    seed = seed * 1337; 
+
+    const pseudoRandom = () => {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    };
+
+    const allSeats: string[] = [];
+    ['A', 'B', 'C'].forEach(r => { for (let i=1; i<=8; i++) allSeats.push(`${r}${i}`) });
+    ['H', 'I', 'J', 'K', 'L'].forEach(r => { for (let i=1; i<=8; i++) allSeats.push(`${r}${i}`) });
+    
+    const booked: string[] = [];
+    allSeats.forEach(seat => {
+      // ~35% chance a seat is booked
+      if (pseudoRandom() > 0.65) {
+        booked.push(seat);
+      }
+    });
+    return booked;
+  }, [date, cinema, time]);
+
   const toggleSeat = (id: string) => {
+    if (bookedSeats.includes(id)) return;
     setSelectedSeats(prev => 
       prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
     );
@@ -31,14 +62,18 @@ export default function SeatSelection({ onProceed }: SeatSelectionProps) {
           {Array.from({ length: leftCount }).map((_, i) => {
             const id = `${rowLabel}${i + 1}`;
             const isSelected = selectedSeats.includes(id);
+            const isBooked = bookedSeats.includes(id);
             return (
               <button
                 key={id}
                 onClick={() => toggleSeat(id)}
+                disabled={isBooked}
                 className={`w-8 h-8 rounded text-xs font-medium transition-all duration-300 border ${
-                  isSelected 
-                    ? "bg-glow-orange border-glow-orange text-white shadow-[0_0_15px_var(--color-glow-orange)] scale-110" 
-                    : "border-white/20 text-gray-400 hover:border-glow-orange hover:text-white bg-white/5 hover:scale-105"
+                  isBooked
+                    ? "border-white/5 text-gray-600 bg-white/5 cursor-not-allowed opacity-50"
+                    : isSelected 
+                      ? "bg-glow-orange border-glow-orange text-white shadow-[0_0_15px_var(--color-glow-orange)] scale-110" 
+                      : "border-white/20 text-gray-400 hover:border-glow-orange hover:text-white bg-white/5 hover:scale-105"
                 }`}
               >
                 {i + 1}
@@ -52,14 +87,18 @@ export default function SeatSelection({ onProceed }: SeatSelectionProps) {
             const num = leftCount + i + 1;
             const id = `${rowLabel}${num}`;
             const isSelected = selectedSeats.includes(id);
+            const isBooked = bookedSeats.includes(id);
             return (
               <button
                 key={id}
                 onClick={() => toggleSeat(id)}
+                disabled={isBooked}
                 className={`w-8 h-8 rounded text-xs font-medium transition-all duration-300 border ${
-                  isSelected 
-                    ? "bg-glow-orange border-glow-orange text-white shadow-[0_0_15px_var(--color-glow-orange)] scale-110" 
-                    : "border-white/20 text-gray-400 hover:border-glow-orange hover:text-white bg-white/5 hover:scale-105"
+                  isBooked
+                    ? "border-white/5 text-gray-600 bg-white/5 cursor-not-allowed opacity-50"
+                    : isSelected 
+                      ? "bg-glow-orange border-glow-orange text-white shadow-[0_0_15px_var(--color-glow-orange)] scale-110" 
+                      : "border-white/20 text-gray-400 hover:border-glow-orange hover:text-white bg-white/5 hover:scale-105"
                 }`}
               >
                 {num}
@@ -106,6 +145,22 @@ export default function SeatSelection({ onProceed }: SeatSelectionProps) {
               {renderRow("J", 4, 4, 350)}
               {renderRow("K", 4, 4, 350)}
               {renderRow("L", 4, 4, 350)}
+            </div>
+
+            {/* Legend */}
+            <div className="flex justify-center gap-8 mt-12 pt-6 border-t border-white/5 w-full">
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded border border-white/20 bg-white/5"></div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">Available</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded border bg-glow-orange border-glow-orange shadow-[0_0_10px_var(--color-glow-orange)]"></div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">Selected</span>
+              </div>
+              <div className="flex items-center gap-3 opacity-50">
+                <div className="w-5 h-5 rounded border border-white/5 bg-white/5"></div>
+                <span className="text-xs text-gray-600 uppercase tracking-wider font-medium">Booked</span>
+              </div>
             </div>
           </div>
         </div>

@@ -142,7 +142,7 @@ export default function BookingFlow({ movieId, movies, onClose }: BookingFlowPro
         {step === "DETAILS" && <MovieDetails movieId={movieId} movies={movies} onProceed={handleDetailsProceed} />}
         {step === "FORMAT" && <FormatSelection onSelect={handleFormatSelect} />}
         {step === "TIMING" && <TimingSelection onSelect={handleTimingSelect} />}
-        {step === "SEAT" && <SeatSelection onProceed={handleSeatProceed} />}
+        {step === "SEAT" && <SeatSelection date={bookingData.date} cinema={bookingData.cinema} time={bookingData.time} onProceed={handleSeatProceed} />}
         {step === "PAYMENT" && <PaymentSelection movieId={movieId} movies={movies} bookingData={bookingData} onProceed={handlePaymentProceed} />}
         {step === "SUCCESS" && <BookingSuccess movieId={movieId} movies={movies} bookingData={bookingData} onClose={onClose} />}
       </div>
