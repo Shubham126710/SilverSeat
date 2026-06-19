@@ -10,6 +10,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-mo
 export default function OnboardingPage() {
   const router = useRouter();
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(1);
   
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -20,9 +21,21 @@ export default function OnboardingPage() {
     fetch("/api/movies")
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0) {
           setMovies(data);
+        } else {
+          throw new Error("Empty or invalid data");
         }
+      })
+      .catch((err) => {
+        console.error("Failed to fetch movies, using fallbacks", err);
+        // Fallback to static movies if DB is unreachable
+        import("@/lib/data").then(mod => {
+          setMovies(mod.CURRENT_MOVIES);
+        });
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -190,10 +203,10 @@ export default function OnboardingPage() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setStep(2)}
-                      disabled={selectedGenres.length === 0}
+                      disabled={selectedGenres.length === 0 || isLoading}
                       className="px-6 py-3 sm:px-8 sm:py-3.5 bg-white text-black font-bold text-base sm:text-lg rounded-xl disabled:opacity-50 transition-all hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2"
                     >
-                      Next Step <span className="text-xl">→</span>
+                      {isLoading ? "Loading..." : "Next Step"} <span className="text-xl">→</span>
                     </motion.button>
                   </div>
                 </motion.div>
