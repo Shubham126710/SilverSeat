@@ -23,7 +23,7 @@
   top: -10px;
   left: -10px;
   position: absolute;
-  animation: animate-moon 1.5s infinite;
+  animation: animate-moon 2s infinite;
 }
 
 @keyframes animate-moon {
