@@ -64,5 +64,53 @@ export const CURRENT_MOVIES: any[] = [
     certificate: "U",
     synopsis: "A retired driver returns to the world of Formula 1 to mentor a young prodigy and race against the greatest.",
     cast: ["Brad Pitt", "Damson Idris", "Javier Bardem"]
+  },
+  {
+    id: "m5",
+    title: "Barbie",
+    image: "/barbie_movie.jpeg",
+    tags: ["Comedy", "Fantasy", "Romance", "Music"],
+    rating: 4.6,
+    isNew: false,
+    duration: "114-mins",
+    certificate: "U/A",
+    synopsis: "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land.",
+    cast: ["Margot Robbie", "Ryan Gosling"]
+  },
+  {
+    id: "m6",
+    title: "Super Mario Galaxy",
+    image: "/super_mario_galaxy_movie.jpeg",
+    tags: ["Animation", "Family", "Adventure"],
+    rating: 4.8,
+    isNew: true,
+    duration: "105-mins",
+    certificate: "U",
+    synopsis: "Mario travels across the galaxy to save Princess Peach from Bowser's universal conquest.",
+    cast: ["Chris Pratt", "Anya Taylor-Joy", "Jack Black"]
+  },
+  {
+    id: "m7",
+    title: "Superman: Legacy",
+    image: "/superman_movie.jpeg",
+    tags: ["Action", "Sci-Fi", "Adventure"],
+    rating: 4.7,
+    isNew: true,
+    duration: "140-mins",
+    certificate: "U/A",
+    synopsis: "Follows the Man of Steel as he reconciles his Kryptonian heritage with his human upbringing.",
+    cast: ["David Corenswet", "Rachel Brosnahan"]
+  },
+  {
+    id: "m8",
+    title: "Obsession",
+    image: "/obsession_movie.jpg",
+    tags: ["Thriller", "Mystery", "Crime", "Horror"],
+    rating: 4.3,
+    isNew: true,
+    duration: "125-mins",
+    certificate: "A",
+    synopsis: "A gripping psychological thriller that blurs the line between reality and paranoia.",
+    cast: ["Florence Pugh", "Cillian Murphy"]
   }
 ];

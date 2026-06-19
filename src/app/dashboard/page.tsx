@@ -60,13 +60,16 @@ export default function Dashboard() {
     fetch("/api/movies")
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0) {
           setMovies(data);
         } else {
-          console.error("API returned non-array:", data);
+          throw new Error("API returned non-array or empty data");
         }
       })
-      .catch(err => console.error("Failed to fetch movies:", err));
+      .catch(err => {
+        console.error("Failed to fetch movies:", err);
+        import("@/lib/data").then(mod => setMovies(mod.CURRENT_MOVIES));
+      });
   }, []);
 
   // Dynamic Greeting Logic
