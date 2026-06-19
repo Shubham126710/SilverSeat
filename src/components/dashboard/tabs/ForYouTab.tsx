@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Movie } from "@/lib/data";
+import { Movie, CURRENT_MOVIES } from "@/lib/data";
 import { Star, Sparkles, Settings } from "lucide-react";
 
 interface ForYouTabProps {
@@ -43,7 +43,7 @@ export default function ForYouTab({ movies, onBookMovie, setActiveTab }: ForYouT
 
   // Recommendation Engine Logic (Heuristic based on saved genres)
   // We sort movies by how many of their genres overlap with savedGenres.
-  const recommendedMovies = movies
+  let recommendedMovies = movies
     .map(movie => {
       const movieData = movie as any;
       const movieTags = movieData.genres ? movieData.genres.map((g: any) => g.name) : (movie.tags || []);
@@ -53,6 +53,20 @@ export default function ForYouTab({ movies, onBookMovie, setActiveTab }: ForYouT
     .filter(m => m.matchScore > 0)
     .sort((a, b) => b.matchScore - a.matchScore)
     .slice(0, 16); // Top 16 recommendations
+
+  // If the live database lacks diversity (e.g. only contains Drama movies), 
+  // we fallback to our highly diverse CURRENT_MOVIES list to guarantee recommendations.
+  if (recommendedMovies.length === 0) {
+    recommendedMovies = CURRENT_MOVIES
+      .map(movie => {
+        const movieTags = movie.tags || [];
+        const matchCount = movieTags.filter((g: string) => savedGenres.includes(g)).length;
+        return { ...movie, matchScore: matchCount };
+      })
+      .filter(m => m.matchScore > 0)
+      .sort((a, b) => b.matchScore - a.matchScore)
+      .slice(0, 16);
+  }
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
