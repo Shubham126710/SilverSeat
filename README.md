@@ -39,6 +39,71 @@ Built with aesthetic excellence at its core, Artemis leverages a glassmorphism d
 - **Interactive Promotions & Notifications**: A real-time dropdown system for managing unread alerts and easily copying dynamic promotional codes for discounts.
 - **Seamless Database ORM**: Powered by Prisma and PostgreSQL for rapid data modeling and type-safe, high-speed backend queries.
 
+## 📸 Gallery
+
+<details>
+<summary><b>Click to view UI Screenshots</b></summary>
+<br/>
+
+### 1. Welcome & Authentication
+![Loading Screen](<public/Screenshots/1. loading.png>)
+*The cinematic loading screen that welcomes users to Artemis.*
+
+![Login & Register](<public/Screenshots/4. login:register.png>)
+*Seamless authentication flow with secure credentials and OAuth integration.*
+
+### 2. Personalized Onboarding
+![Onboarding - Genre Selection](<public/Screenshots/5. onboarding(genre) .png>)
+*Users select their favorite genres to build their taste profile.*
+
+![Onboarding - Movie Rating](<public/Screenshots/6. onboarding(movie).png>)
+*Interactive swipe deck to fine-tune personalized movie recommendations.*
+
+### 3. The Dashboard
+![Home Hub](<public/Screenshots/7. home hub.png>)
+*The central dashboard featuring dynamic greetings and curated movie lists.*
+
+![Main Hero Section](<public/Screenshots/2. hero(main).png>)
+*Striking hero banner highlighting the latest blockbuster releases.*
+
+![Brand Movies](<public/Screenshots/3. hero(brand:movies).png>)
+*Movies beautifully categorized by major cinematic brands and studios.*
+
+![Promotional Offers](<public/Screenshots/10. promo.png>)
+*Interactive dropdown for quick access to promotional codes and discounts.*
+
+### 4. Discovery & Profile
+![Search Tab](<public/Screenshots/8. search.png>)
+*Lightning-fast search interface to explore the extensive movie catalog.*
+
+![My Bookings](<public/Screenshots/9. my booking.png>)
+*Dedicated tab to track and manage upcoming cinema visits.*
+
+### 5. Movie Details
+![Movie Overview](<public/Screenshots/11. movie-details.png>)
+*Deep dive into movie metadata, synopsis, and immersive cinematic backgrounds.*
+
+![Cast & Ratings](<public/Screenshots/12. movie-ratings:cast.png>)
+*Detailed cast profiles and critical reception ratings.*
+
+### 6. Booking Experience
+![Format Selection](<public/Screenshots/13. booking(lang:format).png>)
+*Choosing the preferred language and viewing format (e.g., IMAX, 3D).*
+
+![Theatre Selection](<public/Screenshots/14. booking(theatre).png>)
+*Selecting the most convenient cinema location and showtime.*
+
+![Seat Selection](<public/Screenshots/15. booking(seats).png>)
+*Interactive, real-time seat map to reserve the perfect spot.*
+
+![Order Summary](<public/Screenshots/16. booking(summary).png>)
+*Clear breakdown of the order, including tickets, taxes, and applied promos.*
+
+![Booking Confirmation](<public/Screenshots/17. booking(confirmation).png>)
+*Final confirmation screen with a beautiful digital ticket ready for the show.*
+
+</details>
+
 ## 🛠 Tech Stack
 
 This project is built using modern, enterprise-ready web technologies tailored for speed and reliability.
