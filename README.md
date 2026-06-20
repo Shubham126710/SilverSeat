@@ -45,62 +45,56 @@ Built with aesthetic excellence at its core, Artemis leverages a glassmorphism d
 <summary><b>Click to view UI Screenshots</b></summary>
 <br/>
 
-### 1. Welcome & Authentication
-![Loading Screen](public/Screenshots/1.%20loading.png)
-*The cinematic loading screen that welcomes users to Artemis.*
+![1. Loading Screen](public/Screenshots/1.%20loading.png)
+*1. The cinematic loading screen that welcomes users to Artemis.*
 
-![Login & Register](public/Screenshots/4.%20login:register.png)
-*Seamless authentication flow with secure credentials and OAuth integration.*
+![2. Main Hero Section](public/Screenshots/2.%20hero(main).png)
+*2. Striking hero banner highlighting the latest blockbuster releases.*
 
-### 2. Personalized Onboarding
-![Onboarding - Genre Selection](public/Screenshots/5.%20onboarding(genre)%20.png)
-*Users select their favorite genres to build their taste profile.*
+![3. Brand Movies](public/Screenshots/3.%20hero(brand:movies).png)
+*3. Movies beautifully categorized by major cinematic brands and studios.*
 
-![Onboarding - Movie Rating](public/Screenshots/6.%20onboarding(movie).png)
-*Interactive swipe deck to fine-tune personalized movie recommendations.*
+![4. Login & Register](public/Screenshots/4.%20login:register.png)
+*4. Seamless authentication flow with secure credentials and OAuth integration.*
 
-### 3. The Dashboard
-![Home Hub](public/Screenshots/7.%20home%20hub.png)
-*The central dashboard featuring dynamic greetings and curated movie lists.*
+![5. Onboarding - Genre Selection](public/Screenshots/5.%20onboarding(genre)%20.png)
+*5. Users select their favorite genres to build their taste profile.*
 
-![Main Hero Section](public/Screenshots/2.%20hero(main).png)
-*Striking hero banner highlighting the latest blockbuster releases.*
+![6. Onboarding - Movie Rating](public/Screenshots/6.%20onboarding(movie).png)
+*6. Interactive swipe deck to fine-tune personalized movie recommendations.*
 
-![Brand Movies](public/Screenshots/3.%20hero(brand:movies).png)
-*Movies beautifully categorized by major cinematic brands and studios.*
+![7. Home Hub](public/Screenshots/7.%20home%20hub.png)
+*7. The central dashboard featuring dynamic greetings and curated movie lists.*
 
-![Promotional Offers](public/Screenshots/10.%20promo.png)
-*Interactive dropdown for quick access to promotional codes and discounts.*
+![8. Search Tab](public/Screenshots/8.%20search.png)
+*8. Lightning-fast search interface to explore the extensive movie catalog.*
 
-### 4. Discovery & Profile
-![Search Tab](public/Screenshots/8.%20search.png)
-*Lightning-fast search interface to explore the extensive movie catalog.*
+![9. My Bookings](public/Screenshots/9.%20my%20booking.png)
+*9. Dedicated tab to track and manage upcoming cinema visits.*
 
-![My Bookings](public/Screenshots/9.%20my%20booking.png)
-*Dedicated tab to track and manage upcoming cinema visits.*
+![10. Promotional Offers](public/Screenshots/10.%20promo.png)
+*10. Interactive dropdown for quick access to promotional codes and discounts.*
 
-### 5. Movie Details
-![Movie Overview](public/Screenshots/11.%20movie-details.png)
-*Deep dive into movie metadata, synopsis, and immersive cinematic backgrounds.*
+![11. Movie Overview](public/Screenshots/11.%20movie-details.png)
+*11. Deep dive into movie metadata, synopsis, and immersive cinematic backgrounds.*
 
-![Cast & Ratings](public/Screenshots/12.%20movie-ratings:cast.png)
-*Detailed cast profiles and critical reception ratings.*
+![12. Cast & Ratings](public/Screenshots/12.%20movie-ratings:cast.png)
+*12. Detailed cast profiles and critical reception ratings.*
 
-### 6. Booking Experience
-![Format Selection](public/Screenshots/13.%20booking(lang:format).png)
-*Choosing the preferred language and viewing format (e.g., IMAX, 3D).*
+![13. Format Selection](public/Screenshots/13.%20booking(lang:format).png)
+*13. Choosing the preferred language and viewing format (e.g., IMAX, 3D).*
 
-![Theatre Selection](public/Screenshots/14.%20booking(theatre).png)
-*Selecting the most convenient cinema location and showtime.*
+![14. Theatre Selection](public/Screenshots/14.%20booking(theatre).png)
+*14. Selecting the most convenient cinema location and showtime.*
 
-![Seat Selection](public/Screenshots/15.%20booking(seats).png)
-*Interactive, real-time seat map to reserve the perfect spot.*
+![15. Seat Selection](public/Screenshots/15.%20booking(seats).png)
+*15. Interactive, real-time seat map to reserve the perfect spot.*
 
-![Order Summary](public/Screenshots/16.%20booking(summary).png)
-*Clear breakdown of the order, including tickets, taxes, and applied promos.*
+![16. Order Summary](public/Screenshots/16.%20booking(summary).png)
+*16. Clear breakdown of the order, including tickets, taxes, and applied promos.*
 
-![Booking Confirmation](public/Screenshots/17.%20booking(confirmation).png)
-*Final confirmation screen with a beautiful digital ticket ready for the show.*
+![17. Booking Confirmation](public/Screenshots/17.%20booking(confirmation).png)
+*17. Final confirmation screen with a beautiful digital ticket ready for the show.*
 
 </details>
 
